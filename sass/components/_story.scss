@@ -1,0 +1,86 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, .1);
+  background-color: rgba($color-white, .6);
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: $default-font-size;
+  transform: skewX(-12deg);
+
+  @include respond(tab-port) {
+    width: 100%;
+    padding: 4rem;
+    padding-left: 7rem;
+  }
+
+  @include respond(phone) {
+    transform: skewX(0);
+  }
+
+  &__shape {
+    float: left;
+    -webkit-shape-outside: circle(50% at 50% 50%); //Float around the element shape.
+    shape-outside: circle(50% at 50% 50%); //You need the element float and define heigt and width;
+    border-radius: 50%;
+    transform: translateX(-3rem) skewX(12deg); //translateX: instead to use a margin in order to give space between text.
+    position: relative; //Need it in order to abosolute position work on the figcaption.
+    overflow: hidden; //No lo olvides sin esto no fucionan en chrome.
+
+    @supports (clip-path:0 polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+      -webkit-clip-path: circle(50% at 50% 50%);
+      clip-path: circle(50% at 50% 50%); //Look like the element shape.
+      width: 15rem;
+      height: 15rem;
+      border-radius: none;
+    }
+
+    @include respond(phone) {
+      transform: translateX(-3rem) skewX(0);
+    }
+
+  }
+
+  &__img {
+    height: 100%;
+    -webkit-ransform: translateX(-4rem) scale(1.4);
+    transform: translateX(-4rem) scale(1.4);
+    -webkit-transition: all .5s;
+    transition: all .5s;
+    backface-visibility: hidden; //fix weird animation beharvior. */
+  }
+
+  &__text {
+    transform: skewX(12deg);
+
+    @include respond(phone) {
+      transform: skewX(0);
+    }
+  }
+
+  &__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    color: $color-white;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+    transition: all .5s;
+    backface-visibility: hidden; //Fix the shake text.
+  }
+
+  &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover &__img {
+    -webkit-ransform: translateX(-4rem) scale(1);
+    transform: translateX(-4rem) scale(1);
+    -webkit-filter: blur(3px) brightness(80%);
+    filter: blur(3px) brightness(80%);
+  }
+ }

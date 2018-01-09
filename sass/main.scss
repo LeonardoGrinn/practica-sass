@@ -1,0 +1,28 @@
+/* -------------------- Abstracts Files -------------------- */
+@import "abstracts/functions"; //Import a _fuctions.scss file.
+@import "abstracts/mixins"; //Import a _mixins.scss file.
+@import "abstracts/variables"; //Import a _variables.scss file.
+
+/* -------------------- Base Files -------------------- */
+@import "base/base"; //Import a _base.scss file.
+@import "base/animations"; //Import a _animations.scss file.
+@import "base/typography"; //Import a _typography.scss file.
+@import "base/utilities"; //Import a _utilities.scss file.
+
+/* -------------------- Components Files -------------------- */
+@import "components/buttons"; //Import a _buttons.scss file.
+@import "components/compositions"; //Import a _compositions.scss file.
+@import "components/feature-box"; //Import a _feature-box.scss file.
+@import "components/card"; //Import a _card.scss file.
+@import "components/story"; //Import a _story.scss file.
+@import "components/bg-video"; //Import a _bg-video.scss file.
+@import "components/form"; //Import a _form.scss file.
+@import "components/popup"; //Import a _popup.scss file.
+/* -------------------- Layout Files -------------------- */
+@import "layout/header"; //Import a _header.scss file.
+@import "layout/grid"; //Import a _grid.scss file.
+@import "layout/footer"; //Import a _footer.scss file.
+@import "layout/navigation"; //Import a _navigation.scss file.
+
+/* -------------------- Pages Files -------------------- */
+@import "pages/home"; //Import a _home.scss file.

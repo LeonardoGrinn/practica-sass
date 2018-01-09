@@ -1,0 +1,195 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+*,
+*::after,
+*::before { /* all elements has the same behavior*/
+  margin: 0;
+  padding: 0;
+
+  box-sizing: inherit; /* better practice */
+}
+
+html {
+  font-size: 62.5%; /* 16px/10px = .625 root font-size declararion that means 1 rem = 10px*/
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+
+    box-sizing: border-box; /* better practice */
+}
+
+/* ==================================================
+////////////////// HEADER SECTION ///////////////////
+================================================== */
+.header {
+  height: 95vh; /* number * VH means viewport hight */
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(85, 198, 122, 0.81)), url('../img/hero.jpg'); /* linear gradients allows you to put a mask over the image*/
+  background-size: cover; /* cover size try to fit the width box the best it cans */
+  background-position: top; /* stay always on top view of the image */
+
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* >> x y << Every "," is a line of the box */
+}
+
+.header__logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+
+.header__logo {
+  height: 3.5rem;
+}
+
+.header__text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%; /* 50% in relation of the parent element */
+  transform: translate(-50%, -50%); /* separate his position of the parent element */
+  text-align: center;
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+
+  backface-visibility: hidden; /* fix the shake animation error */
+  margin-bottom: 1.6rem;
+}
+
+.heading-primary--main {
+  display: block;
+  font-size: 6rem;
+  font-weight: 40rem;
+  letter-spacing: 3.5rem;
+
+  animation-name: moveInLeft; /* call the animation */
+  animation-duration:  1s; /* duration of the animation */
+  animation-timing-function: ease-out;
+
+  /*
+  animation-delay: 3s;
+  animation-iteration-count: 3;
+  */
+}
+
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.75rem;
+
+  animation: moveInRight 1s ease-out; /* call the animation with atributtes*/
+}
+
+.btn:link,
+.btn:visited { /* pseusdo classes are especial state of a selector*/
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem; /* (up & down) (left & right) */
+  display: inline-block;
+  border-radius: 10rem;
+  transition: all 0.2s;
+  position: relative;
+  font-size: 1.6rem;
+}
+
+/* press effect */
+.btn:hover {
+  transform: translateY(-.3rem);
+  box-shadow: 0 1rem 2rem rgba(0,0,0,0.2);  /* X Y blur */
+}
+.btn:active {
+  transform: translateY(-.1rem);
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,0.2);
+}
+
+.btn--white {
+  color: #777;
+  background-color: #fff;
+}
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s;
+}
+
+.btn--white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6); /* especific scale */
+  opacity: 0;
+}
+
+.btn--animated {
+  animation: moveInBottom .5s ease-out .75s; /* call the animation with atributtes*/
+  animation-fill-mode: backwards; /* 0 to 1 opacity */
+}
+/* ==================================================
+/////////////// ANIMATIONS & EFFECTS ////////////////
+================================================== */
+@keyframes moveInLeft { /* create an animation @ketyframes name_animation */
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  80% {
+    transform: translateX(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight { /* create an animation @ketyframes name_animation */
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  80% {
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInBottom { /* create an animation @ketyframes name_animation */
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
